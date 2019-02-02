@@ -104,11 +104,7 @@
       hash: false,
       pitchWithRotate: false
     });
-    // function onClick(event) {
-    //   console.log("Mouse clicked");
-    //   console.log(event.point);
-    // }
-    // map.on('click',onClick);
+
     var nav = new mapboxgl.NavigationControl();
     map.addControl(nav, 'top-left');
 
@@ -120,23 +116,15 @@
         });
         map.getCanvas().style.cursor = features.length ? 'pointer' : '';
       }
-      // if (features.length) {
-      //   map.getCanvas().style.cursor = 'pointer';
-      // } else {
-      //   map.getCanvas().style.cursor = 'default';
-      // }
     });
 
     map.on('click',function(event) {
-        // console.log('Mouse clicked');
-        // console.log(event.point);
+
         var geometry = event.point;
         var parameters = {
           layers: ['lots']
         }
         var features = map.queryRenderedFeatures(geometry, parameters);
-        //console.log(features);
-        //console.log(features.length + ' features');
 
         var lot = features[0];
         console.log(lot);
