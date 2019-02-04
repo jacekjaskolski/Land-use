@@ -119,7 +119,6 @@
     });
 
     map.on('click',function(event) {
-
         var geometry = event.point;
         var parameters = {
           layers: ['lots']
@@ -130,6 +129,9 @@
         console.log(lot);
 
         if (features.length) {
+          if (map.getZoom()<14) {
+            map.easeTo({center:event.lngLat, zoom:15.5, duration:1000})
+          };
           var bbl = lot.properties.BBL || '–';
           var landUse = landUseNames[lot.properties.LandUse] || '–';
           var zoneDist = lot.properties.ZoneDist1 || '–';
